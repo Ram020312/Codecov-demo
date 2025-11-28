@@ -6,6 +6,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - name: Set up Go
         uses: actions/setup-go@v4
         with:
@@ -18,6 +20,18 @@ jobs:
           go env GOPROXY GOMODCACHE GOMOD || true
           echo "--- ls workspace ---"
           ls -la
+      - name: Ensure module files present
+        run: |
+          echo "Workspace listing before module download:"
+          ls -la
+          if [ ! -f go.mod ]; then
+            echo "ERROR: go.mod not found in workspace — aborting."
+            echo "Tip: ensure you committed go.mod/go.sum and pushed the branch."
+            exit 1
+          fi
+          echo "Found go.mod; contents:"
+          sed -n '1,120p' go.mod
+
       - name: Download modules
         run: go mod download
       - name: Test and get coverage
