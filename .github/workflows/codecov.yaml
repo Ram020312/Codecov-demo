@@ -10,6 +10,14 @@ jobs:
         uses: actions/setup-go@v4
         with:
           go-version: '1.25.x'
+      - name: Debug Go environment
+        run: |
+          echo "--- go version ---"
+          go version || true
+          echo "--- go env GOPROXY GOMODCACHE GOMOD ---"
+          go env GOPROXY GOMODCACHE GOMOD || true
+          echo "--- ls workspace ---"
+          ls -la
       - name: Download modules
         run: go mod download
       - name: Test and get coverage
