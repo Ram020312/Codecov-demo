@@ -1,4 +1,7 @@
 # codecov.yml
+codecov:
+  removed_code_behavior: adjust_base # <-- ADD THIS SECTION
+
 component_management:
   individual_components:
     - component_id: core_logic
@@ -6,8 +9,6 @@ component_management:
       paths: 
         # Target only your main implementation file
         - Cal.go 
-        # You can exclude the test file or simply rely on the 'unittests' flag
-        # - !cal_test.go 
 
 comment:
   # This makes the component breakdown show up in the Pull Request comment
