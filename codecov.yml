@@ -1,14 +1,14 @@
 # codecov.yml
 codecov:
-  removed_code_behavior: adjust_base # <-- ADD THIS SECTION
+  removed_code_behavior: adjust_base 
 
 component_management:
   individual_components:
-    - component_id: core_logic
-      name: Core Logic
-      paths: 
+    - component_id: core_logic  # <-- This line needs four spaces before the dash
+      name: Core Logic        # <-- This line needs six spaces
+      paths:                  # <-- This line needs six spaces
         # Target only your main implementation file
-        - Cal.go 
+        - Cal.go              # <-- This line needs six spaces before the dash
 
 comment:
   # This makes the component breakdown show up in the Pull Request comment
