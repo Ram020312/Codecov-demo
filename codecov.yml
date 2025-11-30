@@ -13,3 +13,16 @@ component_management:
 comment:
   # This makes the component breakdown show up in the Pull Request comment
   layout: "header, diff, flags, components"
+
+status:
+  # Global project coverage must be at least 90%
+  project:
+    default:
+      target: 90%
+  
+  # Override for the critical 'core_logic' component
+  components:
+    core_logic:
+      target: 95% # <-- The minimum target for Cal.go and related files
+
+# ... rest of your file (component_management, comment, etc.)
